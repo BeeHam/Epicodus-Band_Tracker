@@ -19,7 +19,7 @@
 
   <li><a href="/venue/<%= venue.id()%>"><%= venue.name() %></a>
     <form id="form_id" action="/venues" method="post">
-      <input type="hidden" name="band_id" value="<%= venue.id() %>">
+      <input type="hidden" name="venue_id" value="<%= venue.id() %>">
       <input type="hidden" name="_method" value="delete">
       <button type="submit" class="btn btn-danger">X</button>
     </form>

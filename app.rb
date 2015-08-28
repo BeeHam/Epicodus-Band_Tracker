@@ -22,3 +22,9 @@ post('/bands') do
   Band.create({name: name})
   redirect("/bands")
 end
+
+post('/venues') do
+  name = params.fetch("venue_name")
+  Venue.create({name: name})
+  redirect("/venues")
+end
