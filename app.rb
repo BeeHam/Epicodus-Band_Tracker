@@ -16,3 +16,9 @@ get('/venues') do
   @venues = Venue.all()
   erb(:venues)
 end
+
+post('/bands') do
+  name = params.fetch("band_name")
+  Band.create({name: name})
+  redirect("/bands")
+end
