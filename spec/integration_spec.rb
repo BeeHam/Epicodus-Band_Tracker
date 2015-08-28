@@ -7,9 +7,9 @@ describe('user funtionality through Band Tracker application', {:type => :featur
     expect(page).to have_content("Bands")
   end
 
-  # it('will route to the bands page') do
-  #   visit('/')
-  #   click_link('Venues')
-  #   expect(page).to have_content("Venues")
-  # end
+  it('will route to the venues page') do
+    visit('/')
+    click_link('Venues')
+    expect(page).to have_content("Venues")
+  end
 end

@@ -11,3 +11,8 @@ get('/bands') do
   @bands = Band.all()
   erb(:bands)
 end
+
+get('/venues') do
+  @venues = Venue.all()
+  erb(:venues)
+end
