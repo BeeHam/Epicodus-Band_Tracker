@@ -8,6 +8,10 @@
 
 With this web app, users can track their favorite bands. Users can add, list, update, and delete bands. Users can also add venues, and connect them to their bands.
 
+## Known Bugs
+
+Having trouble getting the callback to function properly. It won't post the name if you enter it in capitalized. Until it gets fixed, please only enter text in lowercase.
+
 ## Setup
 
 - Clone repository at: https://github.com/BeeHam/Epicodus-Band_Tracker.git
