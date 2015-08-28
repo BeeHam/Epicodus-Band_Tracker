@@ -35,6 +35,16 @@ describe('user funtionality through Band Tracker application', {:type => :featur
     expect(page).to have_content('Generic')
   end
 
+  it('will update a band') do
+    visit('/bands')
+    fill_in("band_name", :with => "generic")
+    click_button('Submit')
+    click_link('Generic')
+    click_button('Update')
+    fill_in('band', :with => 'not generic')
+    expect(page).to_not have_content("Not generic")
+  end
+
   it('will delete a band') do
     visit('/bands')
     fill_in("band_name", :with => "generic")
