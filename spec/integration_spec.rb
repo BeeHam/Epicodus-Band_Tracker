@@ -19,4 +19,11 @@ describe('user funtionality through Band Tracker application', {:type => :featur
     click_button('Submit')
     expect(page).to have_content("Generic")
   end
+
+  it('will post a band') do
+    visit('/bands')
+    fill_in("band_name", :with => "generic")
+    click_button('Submit')
+    expect(page).to have_content("Generic")
+  end
 end

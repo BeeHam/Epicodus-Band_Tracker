@@ -18,11 +18,11 @@
   <% @venues.each() do |venue|  %>
 
   <li><a href="/venue/<%= venue.id()%>"><%= venue.name() %></a>
-    <form id="form_id" action="/venues" method="post">
+    <!-- <form id="form_id" action="/venues" method="post">
       <input type="hidden" name="venue_id" value="<%= venue.id() %>">
       <input type="hidden" name="_method" value="delete">
-      <button type="submit" class="btn btn-danger">X</button>
-    </form>
+      <button type="submit">X</button>
+    </form> -->
   </li>
 
   <% end %>

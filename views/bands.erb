@@ -18,11 +18,11 @@
   <% @bands.each() do |band|  %>
 
   <li><a href="/band/<%= band.id()%>"><%= band.name() %></a>
-    <form id="form_id" action="/bands" method="post">
+    <!-- <form id="form_id" action="/bands" method="post">
       <input type="hidden" name="band_id" value="<%= band.id() %>">
       <input type="hidden" name="_method" value="delete">
-      <button type="submit" class="btn btn-danger">X</button>
-    </form>
+      <button type="submit">X</button>
+    </form> -->
   </li>
 
   <% end %>
