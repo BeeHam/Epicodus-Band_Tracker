@@ -38,3 +38,10 @@ get('/venue/:id') do
   @venue = Venue.find(params.fetch("id").to_i())
   erb(:venue)
 end
+
+post('/band/:id') do
+  @band = Band.find(params.fetch("id").to_i())
+  venue = params.fetch('venue')
+  @band.venues.create({:name => venue})
+  redirect("/band/#{@band.id()}")
+end
