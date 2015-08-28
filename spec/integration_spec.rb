@@ -9,15 +9,8 @@ describe('user funtionality through Band Tracker application', {:type => :featur
 
   it('will route to the venues page') do
     visit('/')
-    click_link('Venues')
-    expect(page).to have_content("Venues")
-  end
-
-  it('will post a band') do
-    visit('/bands')
-    fill_in("band_name", :with => "generic")
-    click_button('Submit')
-    expect(page).to have_content("Generic")
+    click_link('Venue')
+    expect(page).to have_content("Venue Form")
   end
 
   it('will post a band') do
@@ -33,4 +26,22 @@ describe('user funtionality through Band Tracker application', {:type => :featur
     click_button('Submit')
     expect(page).to have_content("Generic")
   end
+
+  it('will route to an individual band page') do
+    visit('/bands')
+    fill_in("band_name", :with => "generic")
+    click_button('Submit')
+    click_link('Generic')
+    expect(page).to have_content('Generic')
+  end
+
+  it('will delete a band') do
+    visit('/bands')
+    fill_in("band_name", :with => "generic")
+    click_button('Submit')
+    click_link('Generic')
+    click_button('Delete Band')
+    expect(page).to_not have_content("Generic")
+  end
+
 end

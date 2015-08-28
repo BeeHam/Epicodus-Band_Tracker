@@ -45,3 +45,31 @@ post('/band/:id') do
   @band.venues.create({:name => venue})
   redirect("/band/#{@band.id()}")
 end
+
+post('/venue/:id') do
+  @venue = Venue.find(params.fetch("id").to_i())
+  band = params.fetch('band')
+  @venue.bands.create({:name => band})
+  redirect("/venue/#{@venue.id()}")
+end
+
+patch('/band/:id') do
+  @band = Band.find(params.fetch("id").to_i())
+  band = params.fetch('band')
+  @band.update({:name => band})
+  redirect back
+end
+
+patch('/venue/:id') do
+  @venue = Venue.find(params.fetch("id").to_i())
+  venue = params.fetch('venue')
+  @venue.update({:name => venue})
+  redirect back
+end
+
+delete('/bands') do
+  band = Band.find(params.fetch('band_id').to_i())
+  band.destroy()
+  @bands = Band.all()
+  redirect('/bands')
+end

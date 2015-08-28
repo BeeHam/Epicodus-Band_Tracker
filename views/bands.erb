@@ -1,9 +1,11 @@
 <h1>Bands</h1>
 
-<form action="/bands" method="post">
-  <label for="band_name">Band</label>
-  <input type="text" name="band_name" id="band_name" placeholder="Name">
-  <button type="submit">Submit</button>
+<form action="/bands" method="post" class="form-inline">
+  <div class="input-group">
+    <input type="text" name="band_name" id="band_name" class="form-control" placeholder="Name">
+    <span class="input-group-btn">
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
 </form>
 
 <% if @bands == [] %>
@@ -17,13 +19,7 @@
 
   <% @bands.each() do |band|  %>
 
-  <li><a href="/band/<%= band.id()%>"><%= band.name() %></a>
-    <!-- <form id="form_id" action="/bands" method="post">
-      <input type="hidden" name="band_id" value="<%= band.id() %>">
-      <input type="hidden" name="_method" value="delete">
-      <button type="submit">X</button>
-    </form> -->
-  </li>
+  <li><a href="/band/<%= band.id()%>"><%= band.name() %></a></li>
 
   <% end %>
 

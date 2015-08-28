@@ -1,9 +1,13 @@
-<h1>Venues</h1>
+<h1>Venue Form</h1>
 
-<form action="/venues" method="post">
-  <label for="venue_name">Venue</label>
-  <input type="text" name="venue_name" id="venue_name" placeholder="Name">
-  <button type="submit">Submit</button>
+<form action="/venues" method="post" class="form-inline">
+  <div>
+    <div class="input-group">
+      <input type="text" name="venue_name" id="venue_name"  class="form-control" placeholder="Name">
+      <span class="input-group-btn">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </div>
 </form>
 
 <% if @venues == [] %>
@@ -17,13 +21,7 @@
 
   <% @venues.each() do |venue|  %>
 
-  <li><a href="/venue/<%= venue.id()%>"><%= venue.name() %></a>
-    <!-- <form id="form_id" action="/venues" method="post">
-      <input type="hidden" name="venue_id" value="<%= venue.id() %>">
-      <input type="hidden" name="_method" value="delete">
-      <button type="submit">X</button>
-    </form> -->
-  </li>
+  <li><%= venue.name() %></li>
 
   <% end %>
 
