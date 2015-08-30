@@ -30,6 +30,7 @@ post('/venues') do
 end
 
 get('/band/:id') do
+  @venue = Venue.all()
   @band = Band.find(params.fetch("id").to_i())
   erb(:band)
 end
@@ -39,10 +40,18 @@ get('/venue/:id') do
   erb(:venue)
 end
 
-post('/band/:id') do
+# post('/band/:id') do
+#   @venue = Venue.all()
+#   @band = Band.find(params.fetch("id").to_i())
+#   venue = params.fetch('venue')
+#   @band.venues.create({:name => venue})
+#   redirect("/band/#{@band.id()}")
+# end
+
+patch('/band/:id') do
   @band = Band.find(params.fetch("id").to_i())
-  venue = params.fetch('venue')
-  @band.venues.create({:name => venue})
+  venue = Venue.find(params.fetch('venue').to_i())
+  @band.venues.push(venue)
   redirect("/band/#{@band.id()}")
 end
 

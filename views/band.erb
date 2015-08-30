@@ -1,40 +1,68 @@
 <h2><%= @band.name() %></h2>
-
-  <form class="form-inline" action="/band/<%= @band.id() %>" method="post">
-    <input type="hidden" name="band_id" value="<%= @band.id() %>">
-    <input type="hidden" name="_method" value="patch">
-    <div class="input-group">
-      <input type="text" name="band" id="band" class="form-control" placeholder="Band Name">
-      <span class="input-group-btn">
-      <button type="submit" class="btn btn-primary">Update</button>
-    </div>
-  </form>
-  <form id="form_id" class="form-inline" action="/bands" method="post">
-    <input type="hidden" name="band_id" value="<%= @band.id() %>">
-    <input type="hidden" name="_method" value="delete">
-    <button type="submit" class="btn btn-danger">Delete Band</button>
-  </form>
+<div class="row">
+  <div class="col-md-4">
+    <form action="/band/<%= @band.id() %>" method="post">
+      <input type="hidden" name="band_id" value="<%= @band.id() %>">
+      <input type="hidden" name="_method" value="patch">
+      <div class="input-group">
+        <input type="text" name="band" id="band" class="form-control" placeholder="Band Name">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </span>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <form id="form_id" class="form-inline" action="/bands" method="post">
+      <input type="hidden" name="band_id" value="<%= @band.id() %>">
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit" class="btn btn-danger">Delete Band</button>
+    </form>
+  </div>
+</div>
 
 <h2>Venues Played</h2>
+<div class="row">
+  <div class="col-md-4">
+    <form id="venue" action="/band/<%= @band.id() %>" method="post">
+      <div class="input-group">
+        <input type="hidden" name="band_id" id="band_id" value="<% @band.id() %>">
+        <input type="hidden" name="_method" value="patch">
+        <!-- <input type="text" name="venue" id="venue" class="form-control" placeholder="Venue Name"> -->
 
-<form id="venue" class="form-inline" action="/band/<%= @band.id() %>" method="post">
-  <div>
-    <div class="input-group">
-      <input type="hidden" name="band_id" id="band_id" value="<% @band.id() %>">
-      <input type="text" name="venue" id="venue" class="form-control" placeholder="Venue Name">
-      <span class="input-group-btn">
-      <button name="submit" class="btn btn-primary">Add</button>
-    </div>
+        <select class="form-control" id="venue" name="venue">
+          <% @venue.each() do |venue| %>
+          <option value="<%= venue.id() %>"><%= venue.name() %></option>
+          <% end %>
+        </select>
+
+        <span class="input-group-btn">
+          <button name="submit" class="btn btn-primary">Add</button>
+        </span>
+      </div>
+    </form>
   </div>
-</form>
-
+</div>
 <% if @band.venues.any?() %>
 
-  <ul>
+  <!-- <ul class="list-group">
     <% @band.venues.each() do |band_venue| %>
-    <li><%= band_venue.name() %></li>
+    <li class="list-group-item"><%= band_venue.name() %></li>
     <% end %>
-  </ul>
+  </ul> -->
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Venues</th>
+      </tr>
+    </thead>
+    <% @band.venues.each() do |band_venue| %>
+    <tr>
+      <td><%= band_venue.name() %></td>
+    </tr>
+    <% end %>
+  </table>
 
 <% else %>
 

@@ -7,7 +7,8 @@
     <div class="input-group">
       <input type="text" name="venue_name" id="venue_name"  class="form-control" placeholder="Name">
       <span class="input-group-btn">
-      <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </span>
     </div>
   </div>
 </form>
@@ -19,11 +20,11 @@
 <% else %>
 
 
-<ul>
+<ul class="list-group">
 
   <% @venues.each() do |venue|  %>
 
-  <li><%= venue.name() %></li>
+  <li class="list-group-item"><%= venue.name() %></li>
 
   <% end %>
 
